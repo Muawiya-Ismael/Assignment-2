@@ -1,6 +1,6 @@
 package Code.Salary;
 
-public interface Salaired {
+public interface Salaried {
     double salary(double hourlyRate, double completedHours);
 
 }

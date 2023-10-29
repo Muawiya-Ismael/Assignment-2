@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import Code.BadgetCalculation.DirectorBudget;
 import Code.BadgetCalculation.ManagerBudget;
-import Code.Reports.Reportable;
-import Code.Reports.ManagersReport;
-import Code.Reports.StaffsReport;
+import Code.Database.FakeDatabase;
+import Code.ReportsFactory.ReportType;
 import Code.Salary.CalculateSalary;
-import Code.SalaryCalculation.DirectorReport;
-import Code.SalaryCalculation.ManagerReport;
+import Code.FinalReports.DirectorReport;
+import Code.FinalReports.ManagerReport;
+import Code.Salary.SalaryType;
 import Code.Staffs.Director;
 import Code.Staffs.Manager;
 import Code.Staffs.Staff;
@@ -17,6 +17,13 @@ import Code.Staffs.Staff;
 
 public class Main {
     public static void main(String[] args) {
+        final String DATABASE_URL = "127.0.0:44433/myDB";
+
+        System.out.println("Initialization Section----------------------------------------------------------------------------------------------------------------------------------------");
+
+        FakeDatabase database = FakeDatabase.getConnection(DATABASE_URL);
+
+
         Staff s1 = new Staff(1,"s1(staff)",20,20,100);
         Staff s2 = new Staff(2,"s2(staff)",21,10,150);
         Staff s3 = new Staff(3,"s3(staff)",22,30,50);
@@ -40,23 +47,28 @@ public class Main {
         s0.getManagers().add(s7);
         s0.getStaffs().add(s8);
 
-        System.out.println("-----------------------------------------");
+        System.out.println("Operation Section----------------------------------------------------------------------------------------------------------------------------------------");
 
+        FakeDatabase database2 = FakeDatabase.getConnection(DATABASE_URL);
 
+        System.out.println("\n"+"Operations ->");
 
+        System.out.println("\n"+"s9 director");
         DirectorReport directorReport=new DirectorReport();
-        directorReport.directorReport(s9.getManagers(),s9.getStaffs());
+        directorReport.directorReport(ReportType.NORMAL,s9.getManagers(),s9.getStaffs());
 
+        System.out.println("\n"+"s6 manager");
         ManagerReport managerReport = new ManagerReport();
-        managerReport.managerReport(s6.getStaffs());
+        managerReport.managerReport(ReportType.NORMAL,s6.getStaffs());
 
+        System.out.print("\n"+"s9 director budget: ");
         DirectorBudget s9DirectorBudget = new DirectorBudget();
-        System.out.println(s9DirectorBudget.directorBudget(new CalculateSalary().salary(s9.getHourlyRate(),s9.getCompletedHours()),s9.getManagers(),s9.getStaffs()));
+        System.out.println(s9DirectorBudget.directorBudget(SalaryType.NORMAL,new CalculateSalary().salary(s9.getHourlyRate(),s9.getCompletedHours()),s9.getManagers(),s9.getStaffs()));
 
+        System.out.print("\n"+"s6 manager budget: ");
         ManagerBudget s6ManagerBudget = new ManagerBudget();
-        System.out.println(s6ManagerBudget.managerBudget(new CalculateSalary().salary(s6.getHourlyRate(),s6.getCompletedHours()),s6.getStaffs()));
-
-
+        System.out.println(s6ManagerBudget.managerBudget(SalaryType.NORMAL,new CalculateSalary().salary(s6.getHourlyRate(),s6.getCompletedHours()),s6.getStaffs()));
 
     }
+
 }

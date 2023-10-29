@@ -1,5 +1,7 @@
 package Code.Staffs;
 
+import Code.Database.FakeDatabase;
+
 public class Staff {
     private double id;
     private String name;
@@ -13,6 +15,7 @@ public class Staff {
         this.age = age;
         this.hourlyRate = hourlyRate;
         this.completedHours = completedHours;
+
     }
 
     public double getId() {
