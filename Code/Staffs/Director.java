@@ -14,7 +14,7 @@ public class Director extends Staff {
         return staffs;
     }
 
-    public Director(double id, String name, int age, double hourlyRate, double completedHours, ArrayList<Manager> managers, ArrayList<Staff> staffs) {
+    public Director(String id, String name, int age, double hourlyRate, double completedHours, ArrayList<Manager> managers, ArrayList<Staff> staffs) {
         super(id, name, age, hourlyRate, completedHours);
         managers = managers;
         staffs = staffs;

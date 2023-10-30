@@ -9,7 +9,7 @@ public class Manager extends Staff {
         return staffs;
     }
 
-    public Manager(double id, String name, int age, double hourlyRate, double completedHours, ArrayList<Staff> staffs) {
+    public Manager(String id, String name, int age, double hourlyRate, double completedHours, ArrayList<Staff> staffs) {
         super(id, name, age, hourlyRate, completedHours);
         staffs = staffs;
     }
