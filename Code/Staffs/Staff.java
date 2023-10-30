@@ -3,13 +3,13 @@ package Code.Staffs;
 import Code.Database.FakeDatabase;
 
 public class Staff {
-    private double id;
+    private String id;
     private String name;
     private int age;
     private double hourlyRate;
-    private double completedHours;//completed hours for each month.
+    private double completedHours;
 
-    public Staff(double id, String name, int age, double hourlyRate, double completedHours) {
+    public Staff(String id, String name, int age, double hourlyRate, double completedHours) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -18,7 +18,7 @@ public class Staff {
 
     }
 
-    public double getId() {
+    public String getId() {
         return id;
     }
 

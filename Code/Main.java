@@ -17,23 +17,37 @@ import Code.Staffs.Staff;
 
 public class Main {
     public static void main(String[] args) {
-        final String DATABASE_URL = "127.0.0:44433/myDB";
+        //final String DATABASE_URL = "127.0.0:44433/myDB";
 
         System.out.println("Initialization Section----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println(" ");
+        FakeDatabase database = FakeDatabase.getConnection() ;
 
-        FakeDatabase database = FakeDatabase.getConnection(DATABASE_URL);
+
+        Staff s1 = new Staff("1","s1(staff)",20,20,100);
+        Staff s2 = new Staff("2","s2(staff)",21,10,150);
+        Staff s3 = new Staff("3","s3(staff)",22,30,50);
+        Staff s4 = new Staff("4","s4(staff)",23,40,20);
+        Staff s5 = new Staff("5","s5(staff)",24,50,200);
+        Manager s6 = new Manager("6","s6(manager)",25,60,400,new ArrayList<Staff>());
+        Manager s7 = new Manager("7","s7(manager)",26,70,500,new ArrayList<Staff>());
+        Staff s8 = new Staff("8","s8(staff)",27,80,600);
+        Director s9 = new Director("9","s9(director)",28,90,300,new ArrayList<Manager>(),new ArrayList<Staff>());
+        Director s0 = new Director("0","s0(director)",29,15,75,new ArrayList<Manager>(),new ArrayList<Staff>());
 
 
-        Staff s1 = new Staff(1,"s1(staff)",20,20,100);
-        Staff s2 = new Staff(2,"s2(staff)",21,10,150);
-        Staff s3 = new Staff(3,"s3(staff)",22,30,50);
-        Staff s4 = new Staff(4,"s4(staff)",23,40,20);
-        Staff s5 = new Staff(5,"s5(staff)",24,50,200);
-        Manager s6 = new Manager(6,"s6(manager)",25,60,400,new ArrayList<Staff>());
-        Manager s7 = new Manager(7,"s7(manager)",26,70,500,new ArrayList<Staff>());
-        Staff s8 = new Staff(8,"s8(staff)",27,80,600);
-        Director s9 = new Director(9,"s9(director)",28,90,300,new ArrayList<Manager>(),new ArrayList<Staff>());
-        Director s0 = new Director(0,"s0(director)",29,15,75,new ArrayList<Manager>(),new ArrayList<Staff>());
+        database.addStaff(s1);
+        database.addStaff(s2);
+        database.addStaff(s3);
+        database.addStaff(s4);
+        database.addStaff(s5);
+        database.addStaff(s6);
+        database.addStaff(s7);
+        database.addStaff(s8);
+        database.addStaff(s9);
+        database.addStaff(s0);
+
+
 
         s6.getStaffs().add(s1);
         s6.getStaffs().add(s2);
@@ -47,11 +61,10 @@ public class Main {
         s0.getManagers().add(s7);
         s0.getStaffs().add(s8);
 
+        System.out.println(" ");
         System.out.println("Operation Section----------------------------------------------------------------------------------------------------------------------------------------");
 
-        FakeDatabase database2 = FakeDatabase.getConnection(DATABASE_URL);
-
-        System.out.println("\n"+"Operations ->");
+        //FakeDatabase database2 = FakeDatabase.getConnection(DATABASE_URL);
 
         System.out.println("\n"+"s9 director");
         DirectorReport directorReport=new DirectorReport();
